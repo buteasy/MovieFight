@@ -15,6 +15,8 @@ namespace MovieFight.ViewModel
         private string _fsMovieValue;
         private string _mfMovieValue;
         private string _msMovieValue;
+        private bool _winBoxState;
+        private string _buttonState;
         public string WinnerValue
         {
             get { return _winnerValue; }
@@ -65,23 +67,60 @@ namespace MovieFight.ViewModel
                 OnPropertyChanged();
             }
         }
+        public bool WinBoxState
+        {
+            get { return _winBoxState; }
+            set
+            {
+                if (_winBoxState != value)
+                    _winBoxState = value;
+                    OnPropertyChanged();
+            }
+        } //true if winner is shown
+        public string ButtonState
+        {
+            get { return _buttonState; }
+            set
+            {
+                if (_buttonState != value)
+                {
+                    _buttonState = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         public DelegateCommand FightCommand { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MovieFightViewModel(MovieFightModel model)
         {
             FightCommand = new DelegateCommand(param => Fight());
+            WinnerValue = "Winner movie";
+            WinBoxState = false;
+            ButtonState = "Fight";
             _model = model;
             _model.FightStarted += new EventHandler<MovieFightEventArgs>(FightResult);
         }
 
         private void FightResult(object sender, MovieFightEventArgs e)
         {
+            WinBoxState = true;
+            ButtonState = "Again";
             WinnerValue = e.Winner;
         }
 
         private void Fight()
         {
+            if (WinBoxState)
+            {
+                FFMovieValue = "";
+                FSMovieValue = "";
+                MFMovieValue = "";
+                MSMovieValue = "";
+                WinBoxState = false;
+                ButtonState = "Fight";
+                return;
+            }
             List<String> movies = new List<string>();
             movies.Add(_ffMovieValue);
             movies.Add(_fsMovieValue);

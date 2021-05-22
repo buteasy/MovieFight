@@ -21,8 +21,9 @@
             </StackLayout>
             <Image Source="boy.png" HorizontalOptions="End"/>
         </StackLayout>
-        <Button Command="{Binding FightCommand}" Text="FIGHT" BackgroundColor="Gray" TextColor="LightYellow"/>
-        <Label Text="{Binding WinnerValue}" BackgroundColor="LightYellow" HorizontalTextAlignment="Center"/>
+        <Button Command="{Binding FightCommand}" Text="{Binding ButtonState}" BackgroundColor="Gray" TextColor="LightYellow" FontSize="20"/>
+        <Frame BackgroundColor="LightGray" IsVisible="{Binding WinBoxState}">
+            <Label Text="{Binding WinnerValue}" BackgroundColor="LightYellow" HorizontalTextAlignment="Center" FontSize="36"/>
+        </Frame>
     </StackLayout>
-
 </ContentPage>
