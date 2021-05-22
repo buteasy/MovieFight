@@ -3,16 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MovieFight.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Movie Fight" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+    <StackLayout BackgroundColor="#e9dda0" Spacing="20">
+        <Frame BackgroundColor="#707092" Padding="24" CornerRadius="0">
+            <Image Source="logo.png"/>
         </Frame>
-        <Entry Text="{Binding FFMovieValue}" Placeholder="First Movie" BackgroundColor="LightCoral"/>
-        <Entry Text="{Binding FSMovieValue}" Placeholder="Second Movie" BackgroundColor="LightCoral"/>
-        <Entry Text="{Binding MFMovieValue}" Placeholder="First Movie" BackgroundColor="LightBlue"/>
-        <Entry Text="{Binding MSMovieValue}" Placeholder="Second Movie" BackgroundColor="LightBlue"/>
-        <Button Command="{Binding FightCommand}" Text="FIGHT"/>
-        <Label Text="{Binding WinnerValue}" BackgroundColor="LightYellow"/>
+        <StackLayout Orientation="Horizontal">
+            <Image Source="girl.png"/>
+            <StackLayout Orientation="Vertical">
+                <Entry Text="{Binding FFMovieValue}" Placeholder="First Movie" BackgroundColor="#e9cbcd" WidthRequest="250"/>
+                <Entry Text="{Binding FSMovieValue}" Placeholder="Second Movie" BackgroundColor="#e9cbcd" WidthRequest="250"/>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <StackLayout Orientation="Vertical">
+                <Entry Text="{Binding MFMovieValue}" Placeholder="First Movie" BackgroundColor="#bedcde" WidthRequest="250"/>
+                <Entry Text="{Binding MSMovieValue}" Placeholder="Second Movie" BackgroundColor="#bedcde" WidthRequest="250"/>
+            </StackLayout>
+            <Image Source="boy.png" HorizontalOptions="End"/>
+        </StackLayout>
+        <Button Command="{Binding FightCommand}" Text="FIGHT" BackgroundColor="Gray" TextColor="LightYellow"/>
+        <Label Text="{Binding WinnerValue}" BackgroundColor="LightYellow" HorizontalTextAlignment="Center"/>
     </StackLayout>
 
 </ContentPage>
