@@ -91,6 +91,7 @@ namespace MovieFight.ViewModel
         }
         public DelegateCommand FightCommand { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler ErrorOccured;
 
         public MovieFightViewModel(MovieFightModel model)
         {
@@ -121,12 +122,21 @@ namespace MovieFight.ViewModel
                 ButtonState = "Fight";
                 return;
             }
-            List<String> movies = new List<string>();
-            movies.Add(_ffMovieValue);
-            movies.Add(_fsMovieValue);
-            movies.Add(_mfMovieValue);
-            movies.Add(_msMovieValue);
-            _model.Fight(movies);
+            try
+            {
+                List<String> movies = new List<string>();
+                if (_ffMovieValue == "" || _fsMovieValue == "" || _mfMovieValue == "" || _msMovieValue == "")
+                    throw new NullReferenceException();
+                movies.Add(_ffMovieValue);
+                movies.Add(_fsMovieValue);
+                movies.Add(_mfMovieValue);
+                movies.Add(_msMovieValue);
+                _model.Fight(movies);
+            }
+            catch (NullReferenceException)
+            {
+                ErrorOccured?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void OnPropertyChanged([CallerMemberName] String property = null)

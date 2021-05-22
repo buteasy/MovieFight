@@ -15,6 +15,12 @@ namespace MovieFight
             MovieFightViewModel viewmodel = new MovieFightViewModel(model);
             MainPage = new MainPage();
             MainPage.BindingContext = viewmodel;
+            viewmodel.ErrorOccured += new EventHandler(ErrorHandler);
+        }
+
+        private async void ErrorHandler(object sender, EventArgs e)
+        {
+            await MainPage.DisplayAlert("Error", "Please fill all the movie fields", "Correct");
         }
 
         protected override void OnStart()
