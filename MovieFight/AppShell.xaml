@@ -6,10 +6,10 @@
              x:Class="MovieFight.AppShell">
 
     <TabBar>
-        <Tab Title="Movies" Icon="girl.png">
+        <Tab Title="Movies" Icon="movies_icon.png">
             <ShellContent ContentTemplate="{DataTemplate views:MoviesPage}" />
         </Tab>
-        <Tab Title="Fight" Icon="boy.png">
+        <Tab Title="Fight" Icon="fight_icon.png">
             <ShellContent ContentTemplate="{DataTemplate mvf:MainPage}" />
         </Tab>
     </TabBar>
