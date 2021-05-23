@@ -13,7 +13,11 @@ namespace MovieFight
             InitializeComponent();
             MovieFightModel model = new MovieFightModel();
             MovieFightViewModel viewmodel = new MovieFightViewModel(model);
-            MainPage = new MainPage();
+            //var fightview = new MainPage();
+            //fightview.BindingContext = viewmodel;
+            //MainPage = new MainPage();
+            //MainPage.BindingContext = viewmodel;
+            MainPage = new AppShell();
             MainPage.BindingContext = viewmodel;
             viewmodel.ErrorOccured += new EventHandler(ErrorHandler);
         }

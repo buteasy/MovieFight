@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvf="clr-namespace:MovieFight"
+             xmlns:views="clr-namespace:MovieFight.View"
+             x:Class="MovieFight.AppShell">
+
+    <TabBar>
+        <Tab Title="Movies" Icon="girl.png">
+            <ShellContent ContentTemplate="{DataTemplate views:MoviesPage}" />
+        </Tab>
+        <Tab Title="Fight" Icon="boy.png">
+            <ShellContent ContentTemplate="{DataTemplate mvf:MainPage}" />
+        </Tab>
+    </TabBar>
+</Shell>

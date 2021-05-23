@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MovieFight.View.MoviesPage">
+
+    <StackLayout BackgroundColor="#e9dda0">
+        <Frame BackgroundColor="#707092" Padding="24" CornerRadius="0">
+            <Image Source="logo.png"/>
+        </Frame>
+            <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
+                <Image Source="girl.png"/>
+                <Image Source="boy.png" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
