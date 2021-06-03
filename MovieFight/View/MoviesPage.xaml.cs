@@ -21,7 +21,8 @@ namespace MovieFight.View
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            collectionView.ItemsSource = await App.Database.GetMoviesAsync();
+            girlCollectionView.ItemsSource = await App.Database.GetGirlMoviesAsync();
+            boyCollectionView.ItemsSource = await App.Database.GetBoyMoviesAsync();
         }
 
         async void OnAddButtonClicked(object sender, EventArgs e)
@@ -31,11 +32,13 @@ namespace MovieFight.View
                 await App.Database.SaveMovieAsync(new Movie
                 {
                     Title = nameEntry.Text,
-                    Date = int.Parse(ageEntry.Text)
+                    Date = int.Parse(ageEntry.Text),
+                    Column = int.Parse(columnEntry.Text)
                 });
 
-                nameEntry.Text = ageEntry.Text = string.Empty;
-                collectionView.ItemsSource = await App.Database.GetMoviesAsync();
+                nameEntry.Text = ageEntry.Text = columnEntry.Text = string.Empty;
+                girlCollectionView.ItemsSource = await App.Database.GetGirlMoviesAsync();
+                boyCollectionView.ItemsSource = await App.Database.GetBoyMoviesAsync();
             }
         }
 
@@ -43,11 +46,12 @@ namespace MovieFight.View
         {
             if (!string.IsNullOrWhiteSpace(nameEntry.Text))
             {
-                var movie = await App.Database.GetItemAsync(Convert.ToInt32(nameEntry.Text));
+                var movie = await App.Database.GetItemAsync(nameEntry.Text);
                 await App.Database.DeleteItemAsync(movie);
 
-                nameEntry.Text = ageEntry.Text = string.Empty;
-                collectionView.ItemsSource = await App.Database.GetMoviesAsync();
+                nameEntry.Text = ageEntry.Text = columnEntry.Text =string.Empty;
+                girlCollectionView.ItemsSource = await App.Database.GetGirlMoviesAsync();
+                boyCollectionView.ItemsSource = await App.Database.GetBoyMoviesAsync();
             }
         }
 

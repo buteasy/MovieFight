@@ -11,5 +11,6 @@ namespace MovieFight.Model
         public int ID { get; set; }
         public string Title { get; set; }
         public int Date { get; set; }
+        public int Column { get; set; }
     }
 }

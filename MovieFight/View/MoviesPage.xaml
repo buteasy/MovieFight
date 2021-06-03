@@ -11,11 +11,13 @@
             <Image Source="girl.png"/>
             <Image Source="boy.png" HorizontalOptions="EndAndExpand"/>
         </StackLayout>
-        <StackLayout Margin="20,35,20,20">
+        <StackLayout Margin="20,0,20,20">
             <Entry x:Name="nameEntry"
                Placeholder="Enter name" />
             <Entry x:Name="ageEntry"
                Placeholder="Enter age" />
+            <Entry x:Name="columnEntry"
+               Placeholder="Enter column" />
 
             <StackLayout Orientation="Horizontal">
                 <Button Text="Add"
@@ -23,19 +25,34 @@
                 <Button Text="Delete"
                 Clicked="OnDeleteButtonClicked"/>
             </StackLayout>
-            
-            <CollectionView x:Name="collectionView">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Title}"
+
+            <StackLayout Orientation="Horizontal">
+                <CollectionView x:Name="girlCollectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Title}"
                                FontSize="Medium" />
-                            <Label Text="{Binding Date}"
+                                <Label Text="{Binding Date}"
                                FontSize="Medium" />
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <CollectionView x:Name="boyCollectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Title}"
+                               FontSize="Medium" />
+                                <Label Text="{Binding Date}"
+                               FontSize="Medium" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
 </ContentPage>

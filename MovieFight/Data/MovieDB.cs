@@ -16,14 +16,19 @@ namespace MovieFight.Data
             _database.CreateTableAsync<Movie>().Wait();
         }
 
-        public Task<List<Movie>> GetMoviesAsync()
+        public Task<List<Movie>> GetGirlMoviesAsync()
         {
-            return _database.Table<Movie>().ToListAsync();
+            return _database.Table<Movie>().Where(i => i.Column == 0).ToListAsync();
         }
 
-        public Task<Movie> GetItemAsync(int movieId)
+        public Task<List<Movie>> GetBoyMoviesAsync()
         {
-            return _database.Table<Movie>().Where(i => i.ID == movieId).FirstOrDefaultAsync();
+            return _database.Table<Movie>().Where(i => i.Column == 1).ToListAsync();
+        }
+
+        public Task<Movie> GetItemAsync(string movieTitle)
+        {
+            return _database.Table<Movie>().Where(i => i.Title == movieTitle).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveMovieAsync(Movie movie)
