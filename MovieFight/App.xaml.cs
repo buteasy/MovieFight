@@ -3,11 +3,26 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MovieFight.Model;
 using MovieFight.ViewModel;
+using MovieFight.Data;
+using System.IO;
 
 namespace MovieFight
 {
     public partial class App : Application
     {
+        static MovieDB database;
+
+        public static MovieDB Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new MovieDB(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "movies.db3"));
+                }
+                return database;
+            }
+        }
         public App()
         {
             InitializeComponent();
