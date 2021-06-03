@@ -21,9 +21,19 @@ namespace MovieFight.Data
             return _database.Table<Movie>().ToListAsync();
         }
 
-        public Task<int> SaveMovieAsync(Movie person)
+        public Task<Movie> GetItemAsync(int movieId)
         {
-            return _database.InsertAsync(person);
+            return _database.Table<Movie>().Where(i => i.ID == movieId).FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveMovieAsync(Movie movie)
+        {
+            return _database.InsertAsync(movie);
+        }
+
+        public Task<int> DeleteItemAsync(Movie movie)
+        {
+            return _database.DeleteAsync(movie);
         }
     }
 }

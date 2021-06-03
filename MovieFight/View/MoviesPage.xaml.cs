@@ -24,7 +24,7 @@ namespace MovieFight.View
             collectionView.ItemsSource = await App.Database.GetMoviesAsync();
         }
 
-        async void OnButtonClicked(object sender, EventArgs e)
+        async void OnAddButtonClicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(nameEntry.Text) && !string.IsNullOrWhiteSpace(ageEntry.Text))
             {
@@ -33,6 +33,18 @@ namespace MovieFight.View
                     Title = nameEntry.Text,
                     Date = int.Parse(ageEntry.Text)
                 });
+
+                nameEntry.Text = ageEntry.Text = string.Empty;
+                collectionView.ItemsSource = await App.Database.GetMoviesAsync();
+            }
+        }
+
+        async void OnDeleteButtonClicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(nameEntry.Text))
+            {
+                var movie = await App.Database.GetItemAsync(Convert.ToInt32(nameEntry.Text));
+                await App.Database.DeleteItemAsync(movie);
 
                 nameEntry.Text = ageEntry.Text = string.Empty;
                 collectionView.ItemsSource = await App.Database.GetMoviesAsync();

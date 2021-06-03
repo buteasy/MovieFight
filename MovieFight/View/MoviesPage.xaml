@@ -8,27 +8,30 @@
             <Image Source="logo.png"/>
         </Frame>
         <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
-                <Image Source="girl.png"/>
-                <Image Source="boy.png" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <Image Source="girl.png"/>
+            <Image Source="boy.png" HorizontalOptions="EndAndExpand"/>
         </StackLayout>
         <StackLayout Margin="20,35,20,20">
             <Entry x:Name="nameEntry"
                Placeholder="Enter name" />
             <Entry x:Name="ageEntry"
                Placeholder="Enter age" />
-            <Button Text="Add to Database"
-                Clicked="OnButtonClicked" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Add"
+                Clicked="OnAddButtonClicked" />
+                <Button Text="Delete"
+                Clicked="OnDeleteButtonClicked"/>
+            </StackLayout>
+            
             <CollectionView x:Name="collectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
+                        <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding Title}"
                                FontSize="Medium" />
                             <Label Text="{Binding Date}"
-                               TextColor="Silver"
-                               FontSize="Small" />
+                               FontSize="Medium" />
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
